@@ -1,0 +1,30 @@
+Motion Capture-Based Arch Height Index SOP
+
+This SOP assumes that you have collected motion capture data of a human participant and used a reflective marker set that includes that following markers: 
+
+- Posterior Calcaneus
+- Lateral Calcaneus
+- Proximal Base of the 2nd Metatarsal
+- Distal Head of the 2nd Metatarsal
+- Distal Head of the 1st Metatarsal
+
+
+1) Open Visual 3D
+2) Model > Create > Hybrid Model From .c3d File > Select Static Trial
+3) Model > Apply Model Template > Select Model Template (Download from repository)
+4) Subject Data/Metrics > Edit Marker_Radius (Enter your reflective marker radius) > Edit Mass and Height (Enter participant values)
+5) Build Model
+6) File > Open/Add > Insert New Files Into Your Currently Open Workspace > Select current static trial again and any additional motion trials to want to analyze
+    Filename Error will appear > Click "Append Suffix" (now you will have a static trial and a static copy trial, alternatively you can use a different static stranding trial than the one used to build the model)
+7) Model > Assign Model to Motion Files → Select all trials (including the static trial) → Okay
+8) Signals and Events > Select static trial from drop down menu > Run Pipeline 1 
+* Only after running Pipeline 1 *
+9) Signals and Events > Ensure "All Files" is selected in drop down menu > Run Pipeline 2
+    Please note that the processing pipeline subtracts a marker radius of 0.00475 from dorsum height and truncated foot length. Please update the pipeline to use the appropriate marker radius for your markers. 
+
+At this point the results including the dorsum height, truncated foot length, and arch height index during the trials will be saved to a .txt file for each foot.
+
+
+Arch deformation during motion trials can be calculated from the data by using the following equation: 
+
+Arch deformation(t) = Dynamic AHI(t) - Dynamic AHI(t0) 
